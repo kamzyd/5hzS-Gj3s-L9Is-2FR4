@@ -27,7 +27,7 @@ def testFunction(*value):
 
 class TestMemoization(unittest.TestCase):
     '''Tests the 'memoize' class in search of imperfections,
-       timout misfunctions and type compatibility errors.
+       timeout misfunctions and type compatibility errors.
     '''
     # Functionality tests
 
