@@ -12,6 +12,7 @@ This project's aim is to create a function / method that is able to memeoize res
 #### **VERIFIED FUNCTIONALITY:**
 - [x] The resolver is used as cache key
 - [x] The result of the passed function is memorized
+- [x] The values are correctly returned depending on the resolver
 - [x] After the timeout expires the values are deleted
 
 #### **DATA TYPE TESTING:**
