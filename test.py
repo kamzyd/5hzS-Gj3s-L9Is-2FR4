@@ -38,23 +38,23 @@ class TestMemoization(unittest.TestCase):
 
         # test if values are memorized:
         # the same outcome has to occur 2 times within one
-        # timeout's time
+        # timeout's timespan
         value_a = instance.memoized(1, 1, 1)
         self.assertEqual(instance.memoized(1, 1, 1), value_a, "The first value is not being memorized.")
 
-        # test if another value is memorized:
+        # test if additional values are memorized:
         value_b = instance.memoized(2, 2, 2)
         # this value must not be equal to the first one
         self.assertNotEqual(instance.memoized(1, 1, 1), value_b, "The second cache key is not being memorized.")
         # though, it must be equal to the returned value
         # if the same resolver is passed again within
-        # timeout's time
+        # timeout's timespan
         self.assertEqual(instance.memoized(2, 2, 2), value_b, "The second value is not being memorized.")
 
         # test if the first value can be returned:
         # after the second value is returned the first
         # one still has to remain unchanged
-        self.assertEqual(instance.memoized(1, 1, 1), value_a, "First value gets mixed with the second one.")
+        self.assertEqual(instance.memoized(1, 1, 1), value_a, "First value gets replaced with the second one.")
 
     @freeze_time("1990-12-12 00:0:0")
     def test_timeout(self):
@@ -62,7 +62,7 @@ class TestMemoization(unittest.TestCase):
         value_a = instance.memoized(1, 1, 1)
 
         # test if the same value is returned before the
-        # key is expired
+        # key is expired:
         with freeze_time("1990-12-12 00:0:2"):
             self.assertEqual(instance.memoized(1, 1, 1), value_a, "Timeout error.")
         # test if another value is returned after expiration
@@ -75,7 +75,7 @@ class TestMemoization(unittest.TestCase):
     def __inputTypeTestPerform(self, func, *data):
         instance = memoize(func, timeout = 100)
 
-        # test if the type can be passed to the given function
+        # test if the type can be passed to the given function:
         try:
             anticipated_result = func(*data)
         except TypeError:
@@ -84,8 +84,7 @@ class TestMemoization(unittest.TestCase):
             return 0
 
         # test if the type can be passed to 'memoized' in case
-        # an unhashable type occurs (type unsupported and
-        # cannot be passed)
+        # an unhashable type occurs:
         try:
             result = instance.memoized(*data)
         except TypeError:
@@ -105,10 +104,10 @@ class TestMemoization(unittest.TestCase):
         # valid for debugging:
         # the function with higher probabilty of success without
         # any type of calculations is first. If an error is caused
-        # due to the second function than in conclusion the
-        # 'memoized' is compatible with the given object type
-        # because the test was successful during implementation
-        # of the first function.
+        # due to the second function than in conclusion 'memoized'
+        # is compatible with the given object type because the
+        # test was successful during implementation of the first
+        # function.
         #
         # if no errors will occur the test is passed.
 
