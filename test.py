@@ -106,7 +106,7 @@ class TestMemoization(unittest.TestCase):
         # any type of calculations is first. If an error is caused
         # due to the second function than in conclusion 'memoized'
         # is compatible with the given object type because the
-        # test was successful during implementation of the first
+        # test was successful after implementation of the first
         # function.
         #
         # if no errors will occur the test is passed.
