@@ -79,7 +79,7 @@ class TestMemoization(unittest.TestCase):
         try:
             anticipated_result = func(*data)
         except TypeError:
-            message = "Error occured by passing object type " + type(data[0]).__name__ + " to function " + func.__name__ + "."
+            message = "Error occured while passing object type " + type(data[0]).__name__ + " to function " + func.__name__ + "."
             self.assertTrue(False, message)
             return 0
 
@@ -88,7 +88,7 @@ class TestMemoization(unittest.TestCase):
         try:
             result = instance.memoized(*data)
         except TypeError:
-            message = "Error occured by passing object type " + type(data[0]).__name__ + "."
+            message = "Error occured while passing object type " + type(data[0]).__name__ + "."
             self.assertTrue(False, message)
             return 0
 
