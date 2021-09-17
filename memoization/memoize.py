@@ -6,7 +6,7 @@ class MemoizationError(Exception):
 
 class memoize:
     '''Memorizes various results of the function provided dependent on
-       handed over parameters
+       passed parameters
     
        Methods:
        memoized(self, *resolver)
@@ -20,8 +20,7 @@ class memoize:
     def __init__(self, func, *resolver, timeout = 5000):
         # the current default failure handling "int object not callable"
         # does not deliver the correct error information. That is why
-        # substitute information is added. It is easy to find such errors
-        # so it might be unnecessary but anyway..
+        # substitute information is added.
         if not func or not callable(func):
             raise MemoizationError("Failed to initialize a memoize instance.\n"
                                    "No function provided.")
