@@ -4,9 +4,9 @@ import unittest, time
 from freezegun import freeze_time
 
 # test sequence:
-# memoization testing
-# timeout testing
-# type compatibility testing
+# 1. memoization testing
+# 2. timeout testing
+# 3. type compatibility testing
 #
 # unit-test structure:
 # creation of inputs
