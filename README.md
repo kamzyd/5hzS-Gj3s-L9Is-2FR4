@@ -17,7 +17,7 @@ This project's aim is to create a function / method that is able to memoize resu
 
 #### **DATA TYPE TESTING:**
 ###### **RESULT WITHOUT PROVIDED FUNCTION (addToTime):**
-- string: successfuly memoized
+- string: failure
 - integer: successfuly memoized
 - float: successfuly memoized
 - complex: successfuly memoized
