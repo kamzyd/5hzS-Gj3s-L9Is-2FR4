@@ -80,8 +80,7 @@ class TestMemoization(unittest.TestCase):
             anticipated_result = func(*data)
         except TypeError:
             message = "Error occured while passing object type " + type(data[0]).__name__ + " to function " + func.__name__ + "."
-            self.assertTrue(False, message)
-            return 0
+            assert False, message
 
         # test if the type can be passed to 'memoized' in case
         # an unhashable type occurs:
@@ -89,8 +88,7 @@ class TestMemoization(unittest.TestCase):
             result = instance.memoized(*data)
         except TypeError:
             message = "Error occured while passing object type " + type(data[0]).__name__ + "."
-            self.assertTrue(False, message)
-            return 0
+            assert False, message
 
         # test based on value
         self.assertEqual(result, anticipated_result, "The passed argument is not equal to the returned value after passing object type "
