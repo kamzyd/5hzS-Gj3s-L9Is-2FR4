@@ -34,7 +34,7 @@ class TestMemoization(unittest.TestCase):
     def test_memoization(self):
         # test key mapping:
         instance = memoize(addToTime, 1, 1, 1, timeout = 1e3)
-        self.assertEqual(list(instance.summorialmemory())[0], (1, 1, 1), "The cache key is not being memorized.")
+        self.assertEqual(list(instance.summorialmemory())[0], 3, "The cache key is not being memorized.")
 
         # test if values are memorized:
         # the same outcome has to occur 2 times within one
@@ -56,9 +56,10 @@ class TestMemoization(unittest.TestCase):
         # one still has to remain unchanged
         self.assertEqual(instance.memoized(1, 1, 1), value_a, "First value gets replaced with the second one.")
 
+
     @freeze_time("1990-12-12 00:0:0")
     def test_timeout(self):
-        instance = memoize(addToTime, timeout = 5000)
+        instance = memoize(addToTime, 1, 1, 1, timeout = 5000)
         value_a = instance.memoized(1, 1, 1)
 
         # test if the same value is returned before the
@@ -73,7 +74,7 @@ class TestMemoization(unittest.TestCase):
 
     @freeze_time("1990-12-12")
     def __inputTypeTestPerform(self, func, *data):
-        instance = memoize(func, timeout = 100)
+        instance = memoize(func, 1, 1, 1, timeout = 100)
 
         # test if the type can be passed to the given function:
         try:
@@ -81,7 +82,7 @@ class TestMemoization(unittest.TestCase):
         except TypeError:
             message = "Error occured while passing object type " + type(data[0]).__name__ + " to function " + func.__name__ + "."
             assert False, message
-
+        result = 0
         # test if the type can be passed to 'memoized' in case
         # an unhashable type occurs:
         try:
