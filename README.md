@@ -1,7 +1,7 @@
 # **MEMOIZATION EXERCISE**
 
 #### **DESCRIPTION:**
-This project's aim is to create a function / method that is able to memeoize results of a specific function, return and keep them for as long as their life-span does not exceed the defined timeout and consistently test it out.
+This project's aim is to create a function / method that is able to memoize results of a specific function, return and keep them for as long as their life-span does not exceed the defined timeout and consistently test it out.
 
 #### **REQUIRED DEPENDENCIES:**
 - FreezeGun
